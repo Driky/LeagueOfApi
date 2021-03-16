@@ -2,15 +2,15 @@ import 'package:league_of_api/league_of_api.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('A group of tests', () {
-    Awesome awesome;
+  group('Init client', () {
+    LeagueOfApi client;
 
     setUp(() {
-      awesome = Awesome();
+      client = LeagueOfApi(log: true);
     });
 
-    test('First Test', () {
-      expect(awesome.isAwesome, isTrue);
+    test('Client is initialized', () {
+      expect(client, isA<LeagueOfApi>());
     });
   });
 }
