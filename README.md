@@ -8,7 +8,7 @@ Created from templates made available by Stagehand under a BSD-style
 A simple usage example:
 
 ```dart
-import 'package:LeagueOfApi/LeagueOfApi.dart';
+import 'package:LeagueOfApi/league_of_api.dart';
 
 main() {
   var awesome = new Awesome();

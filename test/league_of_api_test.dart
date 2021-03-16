@@ -1,4 +1,4 @@
-import 'package:LeagueOfApi/LeagueOfApi.dart';
+import 'package:league_of_api/league_of_api.dart';
 import 'package:test/test.dart';
 
 void main() {

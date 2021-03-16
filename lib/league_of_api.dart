@@ -1,8 +1,8 @@
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
-library LeagueOfApi;
+library league_of_api;
 
-export 'src/LeagueOfApi_base.dart';
+export 'src/league_of_api_base.dart';
 
 // TODO: Export any libraries intended for clients of this package.
