@@ -1,10 +1,11 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:league_of_api/api/models/tag_line.dart';
 
 part 'account_dto.g.dart';
 
 @JsonSerializable(createToJson: false)
-class AccountDto {
+class AccountDto extends Equatable {
   final String puuid;
   final String gameName;
   @JsonKey(fromJson: _tagLineFromJson)
@@ -25,4 +26,7 @@ class AccountDto {
   String toString() {
     return 'AccountDto{puuid: $puuid, gameName: $gameName, tagLine: $tagLine}';
   }
+
+  @override
+  List<Object?> get props => [puuid, gameName, tagLine];
 }

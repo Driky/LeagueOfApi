@@ -1,4 +1,6 @@
-class TagLine {
+import 'package:equatable/equatable.dart';
+
+class TagLine extends Equatable {
   late final String _tag;
 
   TagLine(String _tag) {
@@ -13,4 +15,8 @@ class TagLine {
   String toString() {
     return _tag;
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [_tag];
 }
