@@ -18,13 +18,9 @@ class AccountV1Service {
   ) async {
     final url =
         'https://${REGION_ROUTING_VALUES[region]}/riot/account/v1/accounts/by-riot-id/${rid.gameName}/${rid.tagLine}';
-    return await _client.get(url).then((Response response) {
-      if (ERROR_STATUS_CODES.keys.contains(response.statusCode)) {
-        throw Exception(ERROR_STATUS_CODES[response.statusCode]);
-      }
+    final response = await _get(url);
 
-      return AccountDto.fromJson(response.data);
-    });
+    return AccountDto.fromJson(response!.data);
   }
 
   Future<AccountDto> getAccountByPuuid(
@@ -33,13 +29,9 @@ class AccountV1Service {
   ) async {
     final url =
         'https://${REGION_ROUTING_VALUES[region]}/riot/account/v1/accounts/by-puuid/$puuid';
-    return await _client.get(url).then((Response response) {
-      if (ERROR_STATUS_CODES.keys.contains(response.statusCode)) {
-        throw Exception(ERROR_STATUS_CODES[response.statusCode]);
-      }
+    final response = await _get(url);
 
-      return AccountDto.fromJson(response.data);
-    });
+    return AccountDto.fromJson(response!.data);
   }
 
   Future<ActiveShardDto> getActiveShardForAPlayer(
@@ -49,8 +41,13 @@ class AccountV1Service {
   ) async {
     final url =
         'https://${REGION_ROUTING_VALUES[region]}/riot/account/v1/active-shards/by-game/${GAMES[game]}/by-puuid/$puuid';
-    Response? response;
+    final response = await _get(url);
 
+    return ActiveShardDto.fromJson(response!.data);
+  }
+
+  Future<Response?>? _get(String url) async {
+    Response? response;
     try {
       response = await _client.get(url);
     } on DioError catch (error) {
@@ -64,6 +61,7 @@ class AccountV1Service {
         print(error.message);
       }
     }
-    return ActiveShardDto.fromJson(response!.data);
+
+    return response;
   }
 }
