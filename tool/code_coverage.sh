@@ -8,31 +8,30 @@
 set -e
 
 # Gather coverage
-if [[ $(dart --version 2>&1 ) =~ '(dev)' ]]; then
-  OBS_PORT=9292
-  echo "Collecting coverage on port $OBS_PORT..."
 
-  pub global activate coverage
+OBS_PORT=9292
+echo "Collecting coverage on port $OBS_PORT..."
 
-  # Start tests in one VM.
-  dart --disable-service-auth-codes \
-    --enable-vm-service=$OBS_PORT \
-    --pause-isolates-on-exit \
-    test/test_all.dart &
+pub global activate coverage
 
-  # Run the coverage collector to generate the JSON coverage report.
-  pub global run coverage:collect_coverage \
-    --port=$OBS_PORT \
-    --out=var/coverage.json \
-    --wait-paused \
-    --resume-isolates
+# Start tests in one VM.
+dart --disable-service-auth-codes \
+  --enable-vm-service=$OBS_PORT \
+  --pause-isolates-on-exit \
+  test/test_all.dart &
 
-  echo "Generating LCOV report..."
-  pub global run coverage:format_coverage \
-    --lcov \
-    --in=var/coverage.json \
-    --out=coverage/lcov.info \
-    --packages=.packages \
-    --report-on=lib \
-    --check-ignore
-fi
+# Run the coverage collector to generate the JSON coverage report.
+pub global run coverage:collect_coverage \
+  --port=$OBS_PORT \
+  --out=var/coverage.json \
+  --wait-paused \
+  --resume-isolates
+
+echo "Generating LCOV report..."
+pub global run coverage:format_coverage \
+  --lcov \
+  --in=var/coverage.json \
+  --out=coverage/lcov.info \
+  --packages=.packages \
+  --report-on=lib \
+  --check-ignore

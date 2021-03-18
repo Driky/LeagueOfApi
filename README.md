@@ -1,7 +1,7 @@
-A library for Dart developers.
+A library to facilitate League Of Legends API usage.
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+[![Dart CI](https://github.com/Driky/LeagueOfApi/actions/workflows/ci.yaml/badge.svg)](https://github.com/Driky/LeagueOfApi/actions/workflows/ci.yaml)
+[![codecov](https://codecov.io/gh/Driky/LeagueOfApi/branch/main/graph/badge.svg?token=NH7CT5NTM5)](https://codecov.io/gh/Driky/LeagueOfApi)
 
 ## Usage
 

@@ -1,10 +1,13 @@
-name: Test
+name: Dart CI
 
 on:
+  # Run on PRs and pushes to the default branch.
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  schedule:
+    - cron: "0 0 * * 0"
 
 jobs:
   analyze:
@@ -42,7 +45,6 @@ jobs:
 #          file: coverage/lcov.info
 
   coverage:
-    needs: test
     runs-on: ubuntu-latest
     container:
       image:  google/dart:latest
@@ -53,6 +55,12 @@ jobs:
         run: dart pub get
       - name: Collect and report coverage
         run: ./tool/code_coverage.sh
+      - name: Ls
+        run: ls -al
+      - name: Ls2
+        run: ls -al ./tool
+      - name: Ls3
+        run: ls -al ./coverage
       - name: Upload coverage
         uses: codecov/codecov-action@v1.0.2
         with:
