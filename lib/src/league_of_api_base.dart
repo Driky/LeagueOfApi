@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:league_of_api/src/riot_token_api_injector.dart';
 
 class LeagueOfApi {
   late Dio _client;
@@ -17,8 +18,11 @@ class LeagueOfApi {
         receiveTimeout: _RECEIVE_TIMEOUT,
         sendTimeout: _SEND_TIMEOUT,
       ));
-      if (log) {
-        //fixme: uncomment when PrettyDioLogger become compatible with dio v4
+
+      _client.interceptors.add(RiotTokenApiInjector(_apiKey));
+
+// fixme: uncomment when PrettyDioLogger become compatible with dio v4
+//      if (log) {
 //        _client.interceptors.add(PrettyDioLogger(
 //            requestHeader: true,
 //            requestBody: true,
@@ -27,7 +31,7 @@ class LeagueOfApi {
 //            error: true,
 //            compact: true,
 //            maxWidth: 90));
-      }
+//      }
     }
   }
 }
