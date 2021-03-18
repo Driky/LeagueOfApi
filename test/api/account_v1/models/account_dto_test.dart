@@ -25,4 +25,17 @@ void main() {
       expect(accountDto, isA<AccountDto>());
     });
   });
+
+  group('Methods', () {
+    test('toString return expected value', () {
+      var expected =
+          'AccountDto{puuid: testpuuid, gameName: testGameName, tagLine: 1234}';
+      var accountDto = AccountDto(
+              puuid: 'testpuuid',
+              gameName: 'testGameName',
+              tagLine: TagLine('1234'))
+          .toString();
+      expect(accountDto, equals(expected));
+    });
+  });
 }
