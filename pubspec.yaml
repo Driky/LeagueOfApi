@@ -1,7 +1,8 @@
 name: league_of_api
-description: A starting point for Dart libraries or applications.
-# version: 1.0.0
-# homepage: https://www.example.com
+description: A library to facilitate access to the Riot API.
+version: 0.1.0
+repository: https://github.com/Driky/LeagueOfApi
+issue_tracker: https://github.com/Driky/LeagueOfApi/issues
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
