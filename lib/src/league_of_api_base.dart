@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class LeagueOfApi {
   late Dio _client;
@@ -17,14 +16,15 @@ class LeagueOfApi {
         sendTimeout: _SEND_TIMEOUT,
       ));
       if (log) {
-        _client.interceptors.add(PrettyDioLogger(
-            requestHeader: true,
-            requestBody: true,
-            responseBody: true,
-            responseHeader: false,
-            error: true,
-            compact: true,
-            maxWidth: 90));
+        //fixme: uncomment when PrettyDioLogger become compatible with dio v4
+//        _client.interceptors.add(PrettyDioLogger(
+//            requestHeader: true,
+//            requestBody: true,
+//            responseBody: true,
+//            responseHeader: false,
+//            error: true,
+//            compact: true,
+//            maxWidth: 90));
       }
     }
   }
