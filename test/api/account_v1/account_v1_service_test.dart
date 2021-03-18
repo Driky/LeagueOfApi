@@ -28,12 +28,16 @@ void main() {
 
   group('Get methods', () {
     test('getAccountByRiotId return the expected AccountDto', () async {
+      final expectedPuuid = 'test';
+      final expectedGameName = 'Driky';
       final expectedTagLine = TagLine('5441');
       final expected = AccountDto(
-          puuid: 'test', gameName: 'Driky', tagLine: expectedTagLine);
+          puuid: expectedPuuid,
+          gameName: expectedGameName,
+          tagLine: expectedTagLine);
       final responsePayload = jsonEncode({
-        'puuid': 'test',
-        'gameName': 'Driky',
+        'puuid': expectedPuuid,
+        'gameName': expectedGameName,
         'tagLine': '5441',
       });
       final httpResponse = ResponseBody.fromString(
@@ -58,12 +62,15 @@ void main() {
 
     test('getAccountByPuuid return the expected AccountDto', () async {
       final expectedPuuid = 'test';
+      final expectedGameName = 'Driky';
       final expectedTagLine = TagLine('5441');
       final expected = AccountDto(
-          puuid: expectedPuuid, gameName: 'Driky', tagLine: expectedTagLine);
+          puuid: expectedPuuid,
+          gameName: expectedGameName,
+          tagLine: expectedTagLine);
       final responsePayload = jsonEncode({
         'puuid': expectedPuuid,
-        'gameName': 'Driky',
+        'gameName': expectedGameName,
         'tagLine': '5441',
       });
       final httpResponse = ResponseBody.fromString(
