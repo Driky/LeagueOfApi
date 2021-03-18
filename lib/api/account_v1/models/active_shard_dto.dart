@@ -1,9 +1,10 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'active_shard_dto.g.dart';
 
 @JsonSerializable(createToJson: false)
-class ActiveShardDto {
+class ActiveShardDto extends Equatable {
   final String puuid;
   final String game;
   final String activeShard;
@@ -21,4 +22,7 @@ class ActiveShardDto {
   String toString() {
     return 'ActiveShardDto{puuid: $puuid, game: $game, activeShard: $activeShard}';
   }
+
+  @override
+  List<Object?> get props => [puuid, game, activeShard];
 }

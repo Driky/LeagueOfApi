@@ -1,9 +1,11 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:league_of_api/api/Consts/games.dart';
 import 'package:league_of_api/api/Consts/region_routing_values.dart';
 import 'package:league_of_api/api/account_v1/account_v1_service.dart';
 import 'package:league_of_api/api/account_v1/models/account_dto.dart';
+import 'package:league_of_api/api/account_v1/models/active_shard_dto.dart';
 import 'package:league_of_api/api/models/riot_id.dart';
 import 'package:league_of_api/api/models/tag_line.dart';
 import 'package:mockito/annotations.dart';
@@ -49,6 +51,73 @@ void main() {
       final response = await service.getAccountByRiotId(
         RegionRoutingValue.AMERICAS,
         riotId,
+      );
+
+      expect(response == expected, equals(true));
+    });
+
+    test('getAccountByPuuid return the expected AccountDto', () async {
+      final expectedPuuid = 'test';
+      final expectedTagLine = TagLine('5441');
+      final expected = AccountDto(
+          puuid: expectedPuuid, gameName: 'Driky', tagLine: expectedTagLine);
+      final responsePayload = jsonEncode({
+        'puuid': expectedPuuid,
+        'gameName': 'Driky',
+        'tagLine': '5441',
+      });
+      final httpResponse = ResponseBody.fromString(
+        responsePayload,
+        200,
+        headers: {
+          Headers.contentTypeHeader: [Headers.jsonContentType],
+        },
+      );
+
+      when(dioAdapterMock.fetch(any, any, any))
+          .thenAnswer((_) async => httpResponse);
+
+      final response = await service.getAccountByPuuid(
+        RegionRoutingValue.AMERICAS,
+        expectedPuuid,
+      );
+
+      expect(response == expected, equals(true));
+    });
+
+    test('getActiveShardForAPlayer return the expected ActiveShardDto',
+        () async {
+      final expectedPuuid = 'test';
+      final expectedGame = 'lor';
+      final expectedShard = 'na';
+
+      final expected = ActiveShardDto(
+        puuid: expectedPuuid,
+        game: expectedGame,
+        activeShard: expectedShard,
+      );
+
+      final responsePayload = jsonEncode({
+        'puuid': expectedPuuid,
+        'game': expectedGame,
+        'activeShard': expectedShard,
+      });
+
+      final httpResponse = ResponseBody.fromString(
+        responsePayload,
+        200,
+        headers: {
+          Headers.contentTypeHeader: [Headers.jsonContentType],
+        },
+      );
+
+      when(dioAdapterMock.fetch(any, any, any))
+          .thenAnswer((_) async => httpResponse);
+
+      final response = await service.getActiveShardForAPlayer(
+        RegionRoutingValue.AMERICAS,
+        Game.LegendsOfRuneterra,
+        expectedPuuid,
       );
 
       expect(response == expected, equals(true));
