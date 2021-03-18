@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:league_of_api/api/Consts/error_status_codes.dart';
-import 'package:league_of_api/api/Consts/games.dart';
-import 'package:league_of_api/api/Consts/region_routing_values.dart';
 import 'package:league_of_api/api/account_v1/models/account_dto.dart';
+import 'package:league_of_api/api/consts/error_status_codes.dart';
+import 'package:league_of_api/api/consts/games.dart';
+import 'package:league_of_api/api/consts/region_routing_values.dart';
 import 'package:league_of_api/api/models/riot_id.dart';
 
 import 'models/active_shard_dto.dart';

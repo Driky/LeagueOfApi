@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:league_of_api/api/Consts/games.dart';
-import 'package:league_of_api/api/Consts/region_routing_values.dart';
 import 'package:league_of_api/api/account_v1/account_v1_service.dart';
 import 'package:league_of_api/api/account_v1/models/account_dto.dart';
 import 'package:league_of_api/api/account_v1/models/active_shard_dto.dart';
+import 'package:league_of_api/api/consts/games.dart';
+import 'package:league_of_api/api/consts/region_routing_values.dart';
 import 'package:league_of_api/api/models/riot_id.dart';
 import 'package:league_of_api/api/models/tag_line.dart';
 import 'package:mockito/annotations.dart';
