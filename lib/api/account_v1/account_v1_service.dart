@@ -59,6 +59,7 @@ class AccountV1Service {
         // Something happened in setting up or sending the request that triggered an Error
         print(error.requestOptions);
         print(error.message);
+        rethrow;
       }
     }
 

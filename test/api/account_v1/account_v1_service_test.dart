@@ -129,5 +129,61 @@ void main() {
 
       expect(response == expected, equals(true));
     });
+
+    test('HTTP 400 throws', () async {
+      final expectedGameName = 'Driky';
+      final expectedTagLine = TagLine('5441');
+
+      final responsePayload = jsonEncode({});
+      final httpResponse = ResponseBody.fromString(
+        responsePayload,
+        400,
+        headers: {
+          Headers.contentTypeHeader: [Headers.jsonContentType],
+        },
+      );
+      final riotId = RiotId(expectedGameName, expectedTagLine);
+
+      when(dioAdapterMock.fetch(any, any, any))
+          .thenAnswer((_) async => httpResponse);
+
+      expect(
+        () async => await service.getAccountByRiotId(
+          RegionRoutingValue.AMERICAS,
+          riotId,
+        ),
+        throwsA(
+          isA<Exception>(),
+        ),
+      );
+    });
+
+    test('bad request throws', () async {
+      final expectedGameName = 'Dr/i/ky';
+      final expectedTagLine = TagLine('5441');
+
+      final responsePayload = jsonEncode({});
+      final httpResponse = ResponseBody.fromString(
+        responsePayload,
+        400,
+        headers: {
+          Headers.contentTypeHeader: [Headers.jsonContentType],
+        },
+      );
+      final riotId = RiotId(expectedGameName, expectedTagLine);
+
+      when(dioAdapterMock.fetch(any, any, any))
+          .thenAnswer((_) async => httpResponse);
+
+      expect(
+        () async => await service.getAccountByRiotId(
+          RegionRoutingValue.AMERICAS,
+          riotId,
+        ),
+        throwsA(
+          isA<Exception>(),
+        ),
+      );
+    });
   });
 }
