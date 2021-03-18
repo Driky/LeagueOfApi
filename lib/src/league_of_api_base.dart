@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:league_of_api/api/account_v1/account_v1_service.dart';
 import 'package:league_of_api/src/riot_token_api_injector.dart';
 
 class LeagueOfApi {
-  late Dio _client;
+  late final Dio _client;
   final String _apiKey;
+  late final AccountV1Service accountV1Service;
 
   static const int _CONNECT_TIMEOUT = 5000;
   static const int _RECEIVE_TIMEOUT = 3000;
@@ -32,6 +34,8 @@ class LeagueOfApi {
 //            compact: true,
 //            maxWidth: 90));
 //      }
+
+      accountV1Service = AccountV1Service(_client);
     }
   }
 }

@@ -20,4 +20,9 @@ class AccountDto {
       _$AccountDtoFromJson(json);
 
   static TagLine _tagLineFromJson(String value) => TagLine(value);
+
+  @override
+  String toString() {
+    return 'AccountDto{puuid: $puuid, gameName: $gameName, tagLine: $tagLine}';
+  }
 }
