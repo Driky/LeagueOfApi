@@ -2,11 +2,13 @@ import 'package:dio/dio.dart';
 
 class LeagueOfApi {
   late Dio _client;
+  final String _apiKey;
+
   static const int _CONNECT_TIMEOUT = 5000;
   static const int _RECEIVE_TIMEOUT = 3000;
   static const int _SEND_TIMEOUT = 3000;
 
-  LeagueOfApi({Dio? client, bool log = false}) {
+  LeagueOfApi(this._apiKey, {Dio? client, bool log = false}) {
     if (client != null) {
       _client = client;
     } else {

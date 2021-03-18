@@ -7,7 +7,7 @@ void main() {
     late LeagueOfApi client;
 
     setUp(() {
-      client = LeagueOfApi(log: true);
+      client = LeagueOfApi('someapikey', log: true);
     });
 
     test('Client is initialized', () {
@@ -16,7 +16,7 @@ void main() {
 
     test('Client is initialized with given dio instance', () {
       var dio = Dio();
-      client = LeagueOfApi(client: dio);
+      client = LeagueOfApi('someapikey', client: dio);
 
       expect(client, isA<LeagueOfApi>());
     });
