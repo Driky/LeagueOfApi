@@ -1,10 +1,11 @@
+// @dart=2.9
 import 'package:dio/dio.dart';
 import 'package:league_of_api/league_of_api.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Init client', () {
-    LeagueOfApi? client;
+    LeagueOfApi client;
 
     setUp(() {
       client = LeagueOfApi(log: true);
