@@ -26,3 +26,18 @@ class MiniSeriesDto extends Equatable {
   @override
   bool get stringify => true;
 }
+
+class MiniSeriesDtoConverter
+    implements JsonConverter<MiniSeriesDto, Map<String, dynamic>> {
+  const MiniSeriesDtoConverter();
+  @override
+  MiniSeriesDto fromJson(Map<String, dynamic> json) {
+    return MiniSeriesDto.fromJson(json);
+  }
+
+  @override
+  Map<String, dynamic> toJson(MiniSeriesDto object) {
+    throw UnimplementedError(
+        'MiniSeriesDto is read-only (generate MiniSeriesDto.toJson if it\'s no longer the case)');
+  }
+}
