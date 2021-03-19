@@ -1,3 +1,7 @@
+## 0.1.3
+
+- First endpoint in summoner_v4
+
 ## 0.1.1-dev
 
 - Improve description. Give me those pub points.
