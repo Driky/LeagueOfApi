@@ -46,11 +46,25 @@ class LeagueItemDto extends Equatable {
         inactive,
         veteran,
         hotstreak,
-        rank,
         leaguePoints,
-        losses,
+        losses
       ];
 
   @override
   bool get stringify => true;
+}
+
+class LeagueItemDtoConverter
+    implements JsonConverter<LeagueItemDto, Map<String, dynamic>> {
+  const LeagueItemDtoConverter();
+  @override
+  LeagueItemDto fromJson(Map<String, dynamic> json) {
+    return LeagueItemDto.fromJson(json);
+  }
+
+  @override
+  Map<String, dynamic> toJson(LeagueItemDto object) {
+    throw UnimplementedError(
+        'MiniSeriesDto is read-only (generate MiniSeriesDto.toJson if it\'s no longer the case)');
+  }
 }
