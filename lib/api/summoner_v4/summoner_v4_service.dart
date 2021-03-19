@@ -20,6 +20,39 @@ class SummonerV4Service {
     return SummonerDto.fromJson(response!.data);
   }
 
+  Future<SummonerDto> getSummonerByAccountId(
+    PlatformRoutingValue region,
+    String accountId,
+  ) async {
+    final url =
+        'https://${PLATFORM_ROUTING_VALUES[region]}/lol/summoner/v4/summoners/by-account/$accountId';
+    final response = await _get(url);
+
+    return SummonerDto.fromJson(response!.data);
+  }
+
+  Future<SummonerDto> getSummonerByPuuid(
+    PlatformRoutingValue region,
+    String puuid,
+  ) async {
+    final url =
+        'https://${PLATFORM_ROUTING_VALUES[region]}/lol/summoner/v4/summoners/by-puuid/$puuid';
+    final response = await _get(url);
+
+    return SummonerDto.fromJson(response!.data);
+  }
+
+  Future<SummonerDto> getSummonerBySummonerId(
+    PlatformRoutingValue region,
+    String sumonerId,
+  ) async {
+    final url =
+        'https://${PLATFORM_ROUTING_VALUES[region]}/lol/summoner/v4/summoners/$sumonerId';
+    final response = await _get(url);
+
+    return SummonerDto.fromJson(response!.data);
+  }
+
   Future<Response?>? _get(String url) async {
     Response? response;
     try {

@@ -32,7 +32,7 @@ void main() {
   });
 
   group('Get methods', () {
-    test('getAccountByRiotId return the expected AccountDto', () async {
+    test('getSummonerBySummonerName return the expected SummonerDto', () async {
       final responsePayload = jsonEncode({
         'id': 'SD7xREhKZKKZ5vC5aKJf6w6FcOA9HpY4QDEHL4KyzQIha7U',
         'accountId': 'hEbw_NrnHM5sttr1sXEUyHfgRwDOsleNkU_00U7CKAI1atI',
@@ -57,6 +57,96 @@ void main() {
       final response = await service.getSummonerBySummonerName(
         PlatformRoutingValue.NA1,
         summonerDto.name,
+      );
+
+      expect(response == summonerDto, equals(true));
+    });
+
+    test('getSummonerByAccountId return the expected SummonerDto', () async {
+      final responsePayload = jsonEncode({
+        'id': 'SD7xREhKZKKZ5vC5aKJf6w6FcOA9HpY4QDEHL4KyzQIha7U',
+        'accountId': 'hEbw_NrnHM5sttr1sXEUyHfgRwDOsleNkU_00U7CKAI1atI',
+        'puuid':
+            'lIQ0bUHcMziDaMWPRoYNkOSncdpF_a8-QpPHBQFIU5oPBWGQpVcpM7ijXU75l-0Hd4LAj0HOV7un_w',
+        'name': 'DrykTheViking',
+        'profileIconId': 4777,
+        'revisionDate': 1615949557000,
+        'summonerLevel': 179
+      });
+      final httpResponse = ResponseBody.fromString(
+        responsePayload,
+        200,
+        headers: {
+          Headers.contentTypeHeader: [Headers.jsonContentType],
+        },
+      );
+
+      when(dioAdapterMock.fetch(any, any, any))
+          .thenAnswer((_) async => httpResponse);
+
+      final response = await service.getSummonerByAccountId(
+        PlatformRoutingValue.NA1,
+        summonerDto.accountId,
+      );
+
+      expect(response == summonerDto, equals(true));
+    });
+
+    test('getSummonerByPuuid return the expected SummonerDto', () async {
+      final responsePayload = jsonEncode({
+        'id': 'SD7xREhKZKKZ5vC5aKJf6w6FcOA9HpY4QDEHL4KyzQIha7U',
+        'accountId': 'hEbw_NrnHM5sttr1sXEUyHfgRwDOsleNkU_00U7CKAI1atI',
+        'puuid':
+            'lIQ0bUHcMziDaMWPRoYNkOSncdpF_a8-QpPHBQFIU5oPBWGQpVcpM7ijXU75l-0Hd4LAj0HOV7un_w',
+        'name': 'DrykTheViking',
+        'profileIconId': 4777,
+        'revisionDate': 1615949557000,
+        'summonerLevel': 179
+      });
+      final httpResponse = ResponseBody.fromString(
+        responsePayload,
+        200,
+        headers: {
+          Headers.contentTypeHeader: [Headers.jsonContentType],
+        },
+      );
+
+      when(dioAdapterMock.fetch(any, any, any))
+          .thenAnswer((_) async => httpResponse);
+
+      final response = await service.getSummonerByPuuid(
+        PlatformRoutingValue.NA1,
+        summonerDto.puuid,
+      );
+
+      expect(response == summonerDto, equals(true));
+    });
+
+    test('getSummonerBySummonerId return the expected SummonerDto', () async {
+      final responsePayload = jsonEncode({
+        'id': 'SD7xREhKZKKZ5vC5aKJf6w6FcOA9HpY4QDEHL4KyzQIha7U',
+        'accountId': 'hEbw_NrnHM5sttr1sXEUyHfgRwDOsleNkU_00U7CKAI1atI',
+        'puuid':
+            'lIQ0bUHcMziDaMWPRoYNkOSncdpF_a8-QpPHBQFIU5oPBWGQpVcpM7ijXU75l-0Hd4LAj0HOV7un_w',
+        'name': 'DrykTheViking',
+        'profileIconId': 4777,
+        'revisionDate': 1615949557000,
+        'summonerLevel': 179
+      });
+      final httpResponse = ResponseBody.fromString(
+        responsePayload,
+        200,
+        headers: {
+          Headers.contentTypeHeader: [Headers.jsonContentType],
+        },
+      );
+
+      when(dioAdapterMock.fetch(any, any, any))
+          .thenAnswer((_) async => httpResponse);
+
+      final response = await service.getSummonerBySummonerId(
+        PlatformRoutingValue.NA1,
+        summonerDto.id,
       );
 
       expect(response == summonerDto, equals(true));
