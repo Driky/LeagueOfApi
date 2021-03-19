@@ -13,7 +13,7 @@ class LeagueItemDto extends Equatable {
   final MiniSeriesDto? miniSeries;
   final bool inactive;
   final bool veteran;
-  final bool hotstreak;
+  final bool hotStreak;
   final String rank;
   final int leaguePoints;
   final int losses;
@@ -26,7 +26,7 @@ class LeagueItemDto extends Equatable {
     this.miniSeries,
     required this.inactive,
     required this.veteran,
-    required this.hotstreak,
+    required this.hotStreak,
     required this.rank,
     required this.leaguePoints,
     required this.losses,
@@ -45,7 +45,7 @@ class LeagueItemDto extends Equatable {
         miniSeries,
         inactive,
         veteran,
-        hotstreak,
+        hotStreak,
         leaguePoints,
         losses
       ];

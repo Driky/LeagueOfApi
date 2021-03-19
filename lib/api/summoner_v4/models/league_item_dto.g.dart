@@ -16,7 +16,7 @@ LeagueItemDto _$LeagueItemDtoFromJson(Map<String, dynamic> json) {
         : MiniSeriesDto.fromJson(json['miniSeries'] as Map<String, dynamic>),
     inactive: json['inactive'] as bool,
     veteran: json['veteran'] as bool,
-    hotstreak: json['hotstreak'] as bool,
+    hotStreak: json['hotStreak'] as bool,
     rank: json['rank'] as String,
     leaguePoints: json['leaguePoints'] as int,
     losses: json['losses'] as int,
