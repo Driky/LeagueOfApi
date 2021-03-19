@@ -1,3 +1,7 @@
+## 0.1.4
+
+- Finished implementing summonerV4
+
 ## 0.1.3
 
 - First endpoint in summoner_v4
