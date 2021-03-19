@@ -1,6 +1,6 @@
 name: league_of_api
 description: A library to facilitate access to the Riot API. Provide easy access to endpoint and dto for an easy access to the response data.
-version: 0.1.1-dev
+version: 0.1.2
 repository: https://github.com/Driky/LeagueOfApi
 issue_tracker: https://github.com/Driky/LeagueOfApi/issues
 
