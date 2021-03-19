@@ -24,7 +24,7 @@ void main() async {
 ## Riot API key
 Get your key [here](https://developer.riotgames.com/)
 
-##Contribution
+## Contribution
 I appreciate any contributions to this package. Any not yet implemented endpoints can be added similarly to the other implementations. Feel free to reach out to me to ask any questions.
 
 ### Model code generation
