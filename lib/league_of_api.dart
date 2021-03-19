@@ -10,4 +10,6 @@ export 'api/consts/games.dart';
 export 'api/consts/region_routing_values.dart';
 export 'api/models/riot_id.dart';
 export 'api/models/tag_line.dart';
+export 'api/summoner_v4/models/summoner_dto.dart';
+export 'api/summoner_v4/summoner_v4_service.dart';
 export 'src/league_of_api_base.dart';
