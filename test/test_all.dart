@@ -12,6 +12,7 @@ void main() {
   group('tag_line', tag_line.main);
   group('riot_id', riot_id.main);
   group('account_dto', account_dto.main);
+  group('summoner_dto', account_dto.main);
   group('active_shard_dto', active_shard_dto.main);
   group('account_v1_service', account_v1_service.main);
 }
