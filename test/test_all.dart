@@ -5,6 +5,7 @@ import 'api/account_v1/models/account_dto_test.dart' as account_dto;
 import 'api/account_v1/models/active_shard_dto_test.dart' as active_shard_dto;
 import 'api/models/riot_id_test.dart' as riot_id;
 import 'api/models/tag_line_test.dart' as tag_line;
+import 'api/summoner_v4/summoner_v4_service_test.dart' as summoner_v4_service;
 import 'league_of_api_test.dart' as league_of_api;
 
 void main() {
@@ -15,4 +16,5 @@ void main() {
   group('summoner_dto', account_dto.main);
   group('active_shard_dto', active_shard_dto.main);
   group('account_v1_service', account_v1_service.main);
+  group('summoner_v4_service', summoner_v4_service.main);
 }
