@@ -1,0 +1,26 @@
+enum PlatformRoutingValue {
+  BR1,
+  EUN1,
+  EUW1,
+  JP1,
+  KR,
+  LA1,
+  LA2,
+  NA1,
+  OC1,
+  TR1,
+  RU,
+}
+const Map<PlatformRoutingValue, String> PLATFORM_ROUTING_VALUES = {
+  PlatformRoutingValue.BR1: 'br1.api.riotgames.com',
+  PlatformRoutingValue.EUN1: 'eun1.api.riotgames.com',
+  PlatformRoutingValue.EUW1: 'euw1.api.riotgames.com',
+  PlatformRoutingValue.JP1: 'jp1.api.riotgames.com',
+  PlatformRoutingValue.KR: 'kr.api.riotgames.com',
+  PlatformRoutingValue.LA1: 'la1.api.riotgames.com',
+  PlatformRoutingValue.LA2: 'la2.api.riotgames.com',
+  PlatformRoutingValue.NA1: 'na1.api.riotgames.com',
+  PlatformRoutingValue.OC1: 'oc1.api.riotgames.com',
+  PlatformRoutingValue.TR1: 'tr1.api.riotgames.com',
+  PlatformRoutingValue.RU: 'ru.api.riotgames.com',
+};
