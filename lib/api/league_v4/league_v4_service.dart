@@ -11,6 +11,15 @@ class LeagueV4Service {
 
   const LeagueV4Service(this._client);
 
+  Future<LeagueListDto> getLeagueById(
+      PlatformRoutingValue region, String leagueId) async {
+    final url =
+        'https://${PLATFORM_ROUTING_VALUES[region]}/lol/league/v4/leagues/$leagueId';
+    final response = await _get(url);
+
+    return LeagueListDto.fromJson(response!.data);
+  }
+
   Future<LeagueListDto> getChallengerLeagueByQueue(
     PlatformRoutingValue region,
     Queue selectedQueue,
@@ -35,17 +44,6 @@ class LeagueV4Service {
         region, selectedQueue, ApexRank.Grandmaster);
   }
 
-  Future<LeagueListDto> _getApexLeagueByQueueAndApexRank(
-      PlatformRoutingValue region,
-      Queue selectedQueue,
-      ApexRank apexRank) async {
-    final url =
-        'https://${PLATFORM_ROUTING_VALUES[region]}/lol/league/v4/${APEX_RANKS[apexRank]}leagues/by-queue/${QUEUES[selectedQueue]}';
-    final response = await _get(url);
-
-    return LeagueListDto.fromJson(response!.data);
-  }
-
   Future<List<LeagueEntryDto>> getLeagueEntriesInAllQueuesBySummonerId(
     PlatformRoutingValue region,
     String summonerId,
@@ -56,6 +54,17 @@ class LeagueV4Service {
 
     return List<LeagueEntryDto>.from(
         response!.data.map((entryJson) => LeagueEntryDto.fromJson(entryJson)));
+  }
+
+  Future<LeagueListDto> _getApexLeagueByQueueAndApexRank(
+      PlatformRoutingValue region,
+      Queue selectedQueue,
+      ApexRank apexRank) async {
+    final url =
+        'https://${PLATFORM_ROUTING_VALUES[region]}/lol/league/v4/${APEX_RANKS[apexRank]}leagues/by-queue/${QUEUES[selectedQueue]}';
+    final response = await _get(url);
+
+    return LeagueListDto.fromJson(response!.data);
   }
 
   Future<Response?>? _get(String url) async {
