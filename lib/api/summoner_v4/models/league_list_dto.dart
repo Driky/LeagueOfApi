@@ -6,14 +6,14 @@ part 'league_list_dto.g.dart';
 
 @JsonSerializable(createToJson: false)
 @LeagueItemDtoConverter()
-class LeagueListDTO extends Equatable {
+class LeagueListDto extends Equatable {
   final String leagueId;
   final String tier;
   final String name;
   final String queue;
   final List<LeagueItemDto> entries;
 
-  LeagueListDTO({
+  LeagueListDto({
     required this.leagueId,
     required this.tier,
     required this.name,
@@ -21,8 +21,8 @@ class LeagueListDTO extends Equatable {
     required this.entries,
   });
 
-  factory LeagueListDTO.fromJson(Map<String, dynamic> json) =>
-      _$LeagueListDTOFromJson(json);
+  factory LeagueListDto.fromJson(Map<String, dynamic> json) =>
+      _$LeagueListDtoFromJson(json);
 
   @override
   List<Object?> get props => [leagueId, tier, name, queue, entries];

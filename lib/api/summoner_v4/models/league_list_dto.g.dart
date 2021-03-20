@@ -6,8 +6,8 @@ part of 'league_list_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-LeagueListDTO _$LeagueListDTOFromJson(Map<String, dynamic> json) {
-  return LeagueListDTO(
+LeagueListDto _$LeagueListDtoFromJson(Map<String, dynamic> json) {
+  return LeagueListDto(
     leagueId: json['leagueId'] as String,
     tier: json['tier'] as String,
     name: json['name'] as String,
