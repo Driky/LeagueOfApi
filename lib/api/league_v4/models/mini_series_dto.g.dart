@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'mini_series_dto.dart';
+part of '../../league_v4/models/mini_series_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

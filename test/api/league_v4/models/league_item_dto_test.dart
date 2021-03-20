@@ -1,6 +1,7 @@
-import 'package:league_of_api/api/summoner_v4/models/league_item_dto.dart';
-import 'package:league_of_api/api/summoner_v4/models/mini_series_dto.dart';
 import 'package:test/test.dart';
+
+import 'file:///E:/dev/project/dart/league_of_api/lib/api/league_v4/models/league_item_dto.dart';
+import 'file:///E:/dev/project/dart/league_of_api/lib/api/league_v4/models/mini_series_dto.dart';
 
 void main() {
   group('Constructor', () {

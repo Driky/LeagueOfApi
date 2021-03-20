@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:league_of_api/api/summoner_v4/models/mini_series_dto.dart';
+
+import 'file:///E:/dev/project/dart/league_of_api/lib/api/league_v4/models/mini_series_dto.dart';
 
 part 'league_item_dto.g.dart';
 
