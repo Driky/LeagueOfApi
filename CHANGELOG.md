@@ -1,3 +1,7 @@
+## 0.1.5
+
+- First endpoint in League-v4
+
 ## 0.1.4
 
 - Finished implementing summonerV4
