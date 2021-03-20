@@ -61,8 +61,8 @@ void main() {
         'name': "Alistar's Captains",
         'entries': [
           {
-            "summonerId": 'ZIzltRFq-1bsl7QeOgw3uMYVe-ycpLKJ7DljbXisrxWk',
-            'summonerName': "Cody Sun",
+            'summonerId': 'ZIzltRFq-1bsl7QeOgw3uMYVe-ycpLKJ7DljbXisrxWk',
+            'summonerName': 'Cody Sun',
             'leaguePoints': 771,
             'rank': 'I',
             'wins': 197,
