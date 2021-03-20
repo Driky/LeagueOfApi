@@ -3,14 +3,11 @@ import 'package:league_of_api/api/league_v4/models/league_list_dto.dart';
 import 'package:league_of_api/api/league_v4/models/mini_series_dto.dart';
 import 'package:test/test.dart';
 
-
-
 void main() {
   late LeagueItemDto leagueItemDto;
   late LeagueItemDto leagueItemDto2;
   late LeagueListDto leagueListDto;
 
-  setUp(() {
   setUp(() {
     leagueItemDto = LeagueItemDto(
         summonerId: 'x4EtzlaOGw2Bsc_5a_RgR3Vou4tg4V6Ct6EtDTzodhehGg0',
