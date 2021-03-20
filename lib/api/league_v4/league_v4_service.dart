@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:league_of_api/api/consts/apex_ranks.dart';
 import 'package:league_of_api/api/consts/error_status_codes.dart';
 import 'package:league_of_api/api/consts/platform_routing_values.dart';
 import 'package:league_of_api/api/consts/queue.dart';
@@ -14,8 +15,32 @@ class LeagueV4Service {
     PlatformRoutingValue region,
     Queue selectedQueue,
   ) async {
+    return _getApexLeagueByQueueAndApexRank(
+        region, selectedQueue, ApexRank.Challenger);
+  }
+
+  Future<LeagueListDto> getMasterLeagueByQueue(
+    PlatformRoutingValue region,
+    Queue selectedQueue,
+  ) async {
+    return _getApexLeagueByQueueAndApexRank(
+        region, selectedQueue, ApexRank.Master);
+  }
+
+  Future<LeagueListDto> getGrandmasterLeagueByQueue(
+    PlatformRoutingValue region,
+    Queue selectedQueue,
+  ) async {
+    return _getApexLeagueByQueueAndApexRank(
+        region, selectedQueue, ApexRank.Grandmaster);
+  }
+
+  Future<LeagueListDto> _getApexLeagueByQueueAndApexRank(
+      PlatformRoutingValue region,
+      Queue selectedQueue,
+      ApexRank apexRank) async {
     final url =
-        'https://${PLATFORM_ROUTING_VALUES[region]}/lol/league/v4/challengerleagues/by-queue/${QUEUES[selectedQueue]}';
+        'https://${PLATFORM_ROUTING_VALUES[region]}/lol/league/v4/${APEX_RANKS[apexRank]}leagues/by-queue/${QUEUES[selectedQueue]}';
     final response = await _get(url);
 
     return LeagueListDto.fromJson(response!.data);
