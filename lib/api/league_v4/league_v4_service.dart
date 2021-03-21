@@ -1,19 +1,17 @@
 import 'dart:collection';
 
 import 'package:dio/dio.dart';
+import 'package:league_of_api/api/base_service.dart';
 import 'package:league_of_api/api/consts/apex_ranks.dart';
 import 'package:league_of_api/api/consts/divisions.dart';
-import 'package:league_of_api/api/consts/error_status_codes.dart';
 import 'package:league_of_api/api/consts/platform_routing_values.dart';
 import 'package:league_of_api/api/consts/queue.dart';
 import 'package:league_of_api/api/consts/tiers.dart';
 import 'package:league_of_api/api/league_v4/models/league_entry_dto.dart';
 import 'package:league_of_api/api/league_v4/models/league_list_dto.dart';
 
-class LeagueV4Service {
-  final Dio _client;
-
-  const LeagueV4Service(this._client);
+class LeagueV4Service extends BaseService {
+  const LeagueV4Service(Dio client) : super(client);
 
   Future<List<LeagueEntryDto>> getAllLeagueEntriesByQueueAndTierAndDivision(
       PlatformRoutingValue region, Queue queue, Tier tier, Division division,
@@ -22,7 +20,7 @@ class LeagueV4Service {
         'https://${PLATFORM_ROUTING_VALUES[region]}/lol/league/v4/entries/${QUEUES[queue]}/${TIERS[tier]}/${DIVISIONS[division]}';
     final queryParameters =
         page != null ? <String, dynamic>{'page': page} : null;
-    final response = await _get(url, queryParameters: queryParameters);
+    final response = await get(url, queryParameters: queryParameters);
 
     return List<LeagueEntryDto>.from(
         response!.data.map((entryJson) => LeagueEntryDto.fromJson(entryJson)));
@@ -32,7 +30,7 @@ class LeagueV4Service {
       PlatformRoutingValue region, String leagueId) async {
     final url =
         'https://${PLATFORM_ROUTING_VALUES[region]}/lol/league/v4/leagues/$leagueId';
-    final response = await _get(url);
+    final response = await get(url);
 
     return LeagueListDto.fromJson(response!.data);
   }
@@ -67,7 +65,7 @@ class LeagueV4Service {
   ) async {
     final url =
         'https://${PLATFORM_ROUTING_VALUES[region]}/lol/league/v4/entries/by-summoner/$summonerId';
-    final response = await _get(url);
+    final response = await get(url);
 
     return List<LeagueEntryDto>.from(
         response!.data.map((entryJson) => LeagueEntryDto.fromJson(entryJson)));
@@ -79,31 +77,8 @@ class LeagueV4Service {
       ApexRank apexRank) async {
     final url =
         'https://${PLATFORM_ROUTING_VALUES[region]}/lol/league/v4/${APEX_RANKS[apexRank]}leagues/by-queue/${QUEUES[selectedQueue]}';
-    final response = await _get(url);
+    final response = await get(url);
 
     return LeagueListDto.fromJson(response!.data);
-  }
-
-  Future<Response?>? _get(
-    String url, {
-    Map<String, dynamic>? queryParameters,
-  }) async {
-    Response? response;
-    try {
-      response = await _client.get(url, queryParameters: queryParameters);
-    } on DioError catch (error) {
-      if (error.response != null) {
-        if (ERROR_STATUS_CODES.keys.contains(error.response?.statusCode)) {
-          throw Exception(ERROR_STATUS_CODES[error.response?.statusCode]);
-        }
-      } else {
-        // Something happened in setting up or sending the request that triggered an Error
-        print(error.requestOptions);
-        print(error.message);
-        rethrow;
-      }
-    }
-
-    return response;
   }
 }
