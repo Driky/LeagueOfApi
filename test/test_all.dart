@@ -3,6 +3,7 @@ import 'package:test/test.dart';
 import 'api/account_v1/account_v1_service_test.dart' as account_v1_service;
 import 'api/account_v1/models/account_dto_test.dart' as account_dto;
 import 'api/account_v1/models/active_shard_dto_test.dart' as active_shard_dto;
+import 'api/league_v4/league_v4_service_test.dart' as league_v4_service;
 import 'api/league_v4/models/league_item_dto_test.dart' as league_item_dto;
 import 'api/league_v4/models/league_list_dto_test.dart' as league_list_dto;
 import 'api/league_v4/models/mini_series_dto_test.dart' as mini_series_dto;
@@ -24,4 +25,5 @@ void main() {
   group('active_shard_dto', active_shard_dto.main);
   group('account_v1_service', account_v1_service.main);
   group('summoner_v4_service', summoner_v4_service.main);
+  group('league_v4_service', league_v4_service.main);
 }

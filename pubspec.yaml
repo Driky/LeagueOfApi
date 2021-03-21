@@ -12,6 +12,7 @@ dependencies:
   dio: ^4.0.0-beta7
   equatable: ^2.0.0
   json_annotation: ^4.0.0
+  collection: ^1.15.0
   #pretty_dio_logger: ^1.1.1
 
 dev_dependencies:
