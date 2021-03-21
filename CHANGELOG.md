@@ -1,3 +1,7 @@
+## 0.1.6
+
+- League-v4 fully implemented.
+
 ## 0.1.5
 
 - First endpoint in League-v4
